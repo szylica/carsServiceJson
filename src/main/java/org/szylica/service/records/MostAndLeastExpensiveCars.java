@@ -1,4 +1,4 @@
-package org.szylica.service;
+package org.szylica.service.records;
 
 import org.szylica.model.car.Car;
 

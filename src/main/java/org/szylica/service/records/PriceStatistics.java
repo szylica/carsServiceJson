@@ -1,4 +1,6 @@
-package org.szylica.service;
+package org.szylica.service.records;
 
-public record PriceStats() {
+import java.math.BigDecimal;
+
+public record PriceStatistics(BigDecimal top, BigDecimal average, BigDecimal least) {
 }

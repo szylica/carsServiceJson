@@ -1,0 +1,24 @@
+{
+  "cars": {
+    "1": {
+      "brand": "BMW",
+      "model": "X1",
+      "speed": 200,
+      "color": "WHITE",
+      "price": 200,
+      "components": [
+        "BREAKS"
+      ]
+    },
+    "2": {
+      "brand": "BMW",
+      "model": "X2",
+      "speed": 220,
+      "color": "BLACK",
+      "price": 210,
+      "components": [
+        "WATER"
+      ]
+    }
+  }
+}

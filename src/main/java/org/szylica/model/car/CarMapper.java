@@ -4,6 +4,6 @@ import org.szylica.model.color.Color;
 
 import java.util.function.Function;
 
-public interface CarFunction {
-    Function<Car, Color> ();
+public interface CarMapper {
+    Function<Car, Color> carToColor = car -> car.color;
 }

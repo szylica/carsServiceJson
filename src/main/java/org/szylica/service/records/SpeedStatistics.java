@@ -1,4 +1,4 @@
-package org.szylica.service;
+package org.szylica.service.records;
 
-public record SpeedStatistics() {
+public record SpeedStatistics(int top, int averagem, int bottom) {
 }

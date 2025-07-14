@@ -1,0 +1,10 @@
+{
+  "brand": "BMW",
+  "model": "X1",
+  "speed": 200,
+  "color": "WHITE",
+  "price": 200,
+  "components": [
+    "BREAKS"
+  ]
+}

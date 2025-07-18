@@ -2,9 +2,10 @@
   "brand": "BMW",
   "model": "X1",
   "speed": 200,
-  "color": "WHITE",
-  "price": 200,
+  "color": "BLACK",
+  "price": 2000,
   "components": [
-    "BREAKS"
+    "BREAKS",
+    "WHEELS"
   ]
 }

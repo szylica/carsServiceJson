@@ -5,6 +5,7 @@ import lombok.*;
 import org.szylica.model.color.Color;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -30,5 +31,17 @@ public class Car {
         }
 
         return speed >= from && speed <= to;
+    }
+
+    public boolean isMoreExpensiveThan(BigDecimal price) {
+        return price.compareTo(this.price) <= 0;
+    }
+
+    public boolean hasComponent(String component) {
+        return components.contains(component);
+    }
+
+    public boolean hasComponents(List<String> componentsList) {
+        return new HashSet<>(componentsList).containsAll(components);
     }
 }

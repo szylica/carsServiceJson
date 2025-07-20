@@ -1,14 +1,15 @@
 package org.szylica.data.json.serializer.impl;
 
+import org.springframework.stereotype.Component;
 import org.szylica.data.json.converter.JsonConverter;
 import org.szylica.data.json.serializer.JsonSerializer;
 import org.szylica.data.json.serializer.generic.AbstractJsonSerializer;
-import org.szylica.data.model.CarData;
-import org.szylica.model.car.Car;
+import org.szylica.data.model.CarsData;
 
-public final class CarDataJsonSerializer extends AbstractJsonSerializer<CarData> implements JsonSerializer<CarData> {
+@Component
+public final class CarsDataJsonSerializer extends AbstractJsonSerializer<CarsData> implements JsonSerializer<CarsData> {
 
-    public CarDataJsonSerializer(JsonConverter<CarData> converter) {
+    public CarsDataJsonSerializer(JsonConverter<CarsData> converter) {
         super(converter);
     }
 }

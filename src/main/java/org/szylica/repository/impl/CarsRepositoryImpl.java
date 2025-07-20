@@ -1,6 +1,7 @@
 package org.szylica.repository.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.szylica.model.car.Car;
 import org.szylica.repository.CarsRepository;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Component
 @RequiredArgsConstructor
 public class CarsRepositoryImpl implements CarsRepository {
 

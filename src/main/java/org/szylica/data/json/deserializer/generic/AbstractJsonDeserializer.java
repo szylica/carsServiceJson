@@ -1,10 +1,9 @@
-package org.szylica.json.deserializer.generic;
+package org.szylica.data.json.deserializer.generic;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.szylica.json.converter.JsonConverter;
-import org.szylica.json.deserializer.JsonDeserializer;
-import org.szylica.model.car.Car;
+import org.szylica.data.json.converter.JsonConverter;
+import org.szylica.data.json.deserializer.JsonDeserializer;
 
 import java.io.FileReader;
 import java.lang.reflect.ParameterizedType;

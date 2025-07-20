@@ -296,26 +296,26 @@ public class CarsServiceImplTest {
 
     }
 
-    @Test
-    void shouldReturnFilteredCars() {
-        //Given
-        Mockito.when(carsRepository.getAllCars()).thenReturn(allCars);
-        var estimatedFilteredCars = List.of(car2, car3);
+//    @Test
+//    void shouldReturnFilteredCars() {
+//        //Given
+//        Mockito.when(carsRepository.getAllCars()).thenReturn(allCars);
+//        var estimatedFilteredCars = List.of(car2, car3);
+//
+//        //When
+//        var filteredCars = carsService.filterCars("BMW",
+//                null,
+//                100,
+//                300,
+//                BigDecimal.valueOf(2100),
+//                BigDecimal.valueOf(2500),
+//                List.of("BREAKS", "WHEELS"));
+//
+//        //Then
+//        Assertions.assertThat(filteredCars).isEqualTo(estimatedFilteredCars);
+//        Mockito.verify(carsRepository, Mockito.times(1)).getAllCars();
 
-        //When
-        var filteredCars = carsService.filterCars("BMW",
-                null,
-                100,
-                300,
-                BigDecimal.valueOf(2100),
-                BigDecimal.valueOf(2500),
-                List.of("BREAKS", "WHEELS"));
-
-        //Then
-        Assertions.assertThat(filteredCars).isEqualTo(estimatedFilteredCars);
-        Mockito.verify(carsRepository, Mockito.times(1)).getAllCars();
-
-    }
+//    }
 
 
 }

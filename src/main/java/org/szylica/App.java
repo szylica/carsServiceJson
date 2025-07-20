@@ -1,23 +1,19 @@
 package org.szylica;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.szylica.config.AppBeansConfig;
-import org.szylica.json.converter.impl.GsonConverter;
-import org.szylica.json.deserializer.impl.CarRepositoryJsonDeserializer;
-import org.szylica.json.serializer.impl.CarJsonSerializer;
-import org.szylica.json.serializer.impl.CarRepositoryJsonSerializer;
+import org.szylica.data.json.deserializer.impl.CarRepositoryJsonDeserializer;
+import org.szylica.data.json.deserializer.impl.CarsDataJsonDeserializer;
+import org.szylica.data.json.serializer.impl.CarsDataJsonSerializer;
 import org.szylica.model.car.Car;
 import org.szylica.model.color.Color;
-import org.szylica.repository.CarsRepository;
 import org.szylica.repository.impl.CarsRepositoryImpl;
 import org.szylica.service.impl.CarsServiceImpl;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
@@ -82,8 +78,12 @@ public class App
 
         var filename = "cars.json";
 
-        var carJsonSerializer = context.getBean("carJsonSerializer", CarJsonSerializer.class);
-        carJsonSerializer.toJson(car1, filename);
+        var carsJsonDeserializer = context.getBean("carsDataJsonDeserializer", CarsDataJsonDeserializer.class);
+
+        carsJsonDeserializer.fromJson(filename).cars().forEach(System.out::println);
+
+//        var carJsonSerializer = context.getBean("carJsonSerializer", CarsDataJsonSerializer.class);
+//        carJsonSerializer.toJson(car1, filename);
 
 //        var repo = new CarsRepositoryImpl();
 //        repo.addCar(car1);
@@ -93,11 +93,9 @@ public class App
 //        var repoJsonSerializer = new CarRepositoryJsonSerializer(repoGsonConverter);
 //        repoJsonSerializer.toJson(repo, repoFilename);
 
-        var deserializer = context.getBean("carRepositoryJsonDeserializer", CarRepositoryJsonDeserializer.class);
-        var repo2 = deserializer.fromJson("repo.json");
-        System.out.println(repo2.getAllCars());
-
-
+//        var deserializer = context.getBean("carRepositoryJsonDeserializer", CarRepositoryJsonDeserializer.class);
+//        var repo2 = deserializer.fromJson("java/resources/repo.json");
+//        System.out.println(repo2.getAllCars());
 
 
 

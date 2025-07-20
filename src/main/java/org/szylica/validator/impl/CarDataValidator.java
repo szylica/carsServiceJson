@@ -1,15 +1,17 @@
 package org.szylica.validator.impl;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import org.springframework.beans.factory.annotation.Value;
 import org.szylica.data.model.CarData;
-import org.szylica.model.car.Car;
 import org.szylica.validator.Validator;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CarValidator implements Validator<CarData> {
+public class CarDataValidator implements Validator<CarData> {
+
+
 
     @Value("${validation.regex}")
     private String regex;
@@ -19,6 +21,8 @@ public class CarValidator implements Validator<CarData> {
 
     @Override
     public Map<String, String> validate(CarData carData) {
+
+        System.out.println(regex);
 
         Map<String, String> errors = new HashMap<>();
 
@@ -32,14 +36,14 @@ public class CarValidator implements Validator<CarData> {
         if(carData.brand() == null) {
             errors.put("brand", "Brand cannot be null");
         }
-        else if(carData.brand().matches(regex)) {
+        else if(!carData.brand().matches(regex)) {
             errors.put("brand", "Brand doesn't match regex");
         }
 
         if(carData.model() == null) {
             errors.put("model", "Model cannot be null");
         }
-        else if(carData.model().matches(regex)) {
+        else if(!carData.model().matches(regex)) {
             errors.put("model", "Model doesn't match regex");
         }
 
@@ -60,4 +64,5 @@ public class CarValidator implements Validator<CarData> {
 
         return errors;
     }
+
 }

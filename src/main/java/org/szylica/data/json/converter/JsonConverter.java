@@ -1,4 +1,4 @@
-package org.szylica.json.converter;
+package org.szylica.data.json.converter;
 
 import com.google.gson.stream.JsonWriter;
 

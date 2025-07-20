@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class CarsServiceImpl implements CarsService {
 
     @Autowired
-    private final CarsRepository carsRepository;
+    private final CarsRepository CarsRepository;
 
     @Override
     public List<Car> sortCarsByCriterium(Criteria criteria, boolean ascending) {
@@ -40,7 +40,7 @@ public class CarsServiceImpl implements CarsService {
         }
 
 
-        var sortedCars = new ArrayList<>(carsRepository
+        var sortedCars = new ArrayList<>(CarsRepository
                 .getAllCars()
                 .stream()
                 .sorted(comparator
@@ -66,14 +66,14 @@ public class CarsServiceImpl implements CarsService {
             throw new IllegalArgumentException("Speed range must be greater than or equal to 0");
         }
 
-        return carsRepository.getAllCars().stream()
+        return CarsRepository.getAllCars().stream()
                 .filter(car -> car.hasSpeedInRange(from, to))
                 .collect(Collectors.toSet());
     }
 
     @Override
     public Map<Color, Integer> countCarsByColor() {
-        return carsRepository.getAllCars()
+        return CarsRepository.getAllCars()
                 .stream()
                 .collect(Collectors.groupingBy(
                         CarMapper.carToColor,
@@ -85,7 +85,7 @@ public class CarsServiceImpl implements CarsService {
 
     @Override
     public Map<String, MostAndLeastExpensiveCars> getMostAndLeastExpensiveCarsForBrands() {
-        return carsRepository.getAllCars()
+        return CarsRepository.getAllCars()
                 .stream()
                 .collect(Collectors.groupingBy(
                         CarMapper.carToBrand,
@@ -97,7 +97,7 @@ public class CarsServiceImpl implements CarsService {
 
     @Override
     public PriceAndSpeedStats getPriceAndSpeedStatistics() {
-        return carsRepository.getAllCars()
+        return CarsRepository.getAllCars()
                 .stream()
                 .collect(new CarsStatsCollector());
     }
@@ -109,7 +109,7 @@ public class CarsServiceImpl implements CarsService {
 
     @Override
     public Map<String, List<Car>> getCarsWithComponents() {
-        var allUniqueComponents = carsRepository.getAllCars()
+        var allUniqueComponents = CarsRepository.getAllCars()
                 .stream()
                 .collect(Collectors.toMap(car -> car, CarMapper.carToComponents))
                 .entrySet()
@@ -120,7 +120,7 @@ public class CarsServiceImpl implements CarsService {
 
         return allUniqueComponents
                 .stream()
-                .collect(Collectors.toMap(Function.identity(), component -> carsRepository.getAllCars().stream().filter(car -> car.hasComponent(component)).toList()))
+                .collect(Collectors.toMap(Function.identity(), component -> CarsRepository.getAllCars().stream().filter(car -> car.hasComponent(component)).toList()))
                 .entrySet()
                 .stream()
                 .sorted(Comparator.comparing(entry -> entry.getValue().size()))
@@ -129,7 +129,7 @@ public class CarsServiceImpl implements CarsService {
 
     @Override
     public List<Car> getCarsWithClosestPrice(BigDecimal price) {
-        return carsRepository.getAllCars()
+        return CarsRepository.getAllCars()
                 .stream()
                 .collect(Collectors.toMap(
                         car -> CarMapper.carToPrice.apply(car).subtract(price).abs(),

@@ -1,12 +1,11 @@
-package org.szylica.json.serializer.generic;
+package org.szylica.data.json.serializer.generic;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.szylica.json.converter.JsonConverter;
-import org.szylica.json.serializer.JsonSerializer;
+import org.szylica.data.json.converter.JsonConverter;
+import org.szylica.data.json.serializer.JsonSerializer;
 
 import java.io.FileWriter;
-import java.io.IOException;
 
 @RequiredArgsConstructor
 public abstract class AbstractJsonSerializer<T> implements JsonSerializer<T> {

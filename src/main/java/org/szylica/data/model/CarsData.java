@@ -1,4 +1,6 @@
 package org.szylica.data.model;
 
-public record CarsData() {
+import java.util.List;
+
+public record CarsData(List<CarData> cars) {
 }

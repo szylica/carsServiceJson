@@ -22,8 +22,6 @@ public class CarDataValidator implements Validator<CarData> {
     @Override
     public Map<String, String> validate(CarData carData) {
 
-        System.out.println(regex);
-
         Map<String, String> errors = new HashMap<>();
 
         if(carData.price() == null) {

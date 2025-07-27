@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.szylica.data.json.converter.JsonConverter;
 import org.szylica.data.json.converter.impl.GsonConverter;
 import org.szylica.data.json.deserializer.JsonDeserializer;
@@ -29,6 +30,7 @@ public class AppTestBeansConfig {
     }
 
     @Bean
+    @Primary
     public JsonDeserializer<CarsData> jsonDeserializer(JsonConverter<CarsData> jsonConverter){
         return new CarsDataJsonDeserializer(jsonConverter);
     }

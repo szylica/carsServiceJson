@@ -10,17 +10,23 @@ import org.szylica.model.car.Car;
 import org.szylica.validator.Validator;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class CarsDataToCarsConverterImpl implements FileToCarsConverter {
+public class JsonFileToCarsConverterImpl implements FileToCarsConverter {
 
     private final JsonDeserializer<CarsData> carsDataJsonDeserializer;
     private final Validator<CarData> carDataValidator;
 
 
     @Override
-    public List<Car> convert(CarsData carsData) {
-        return List.of();
+    public List<Car> convert(String filename) {
+        return carsDataJsonDeserializer.fromJson(filename)
+                .cars()
+                .stream()
+                .filter(carData -> Validator.validate(carData, carDataValidator))
+                .map(CarData::toCar)
+                .collect(Collectors.toList());
     }
 }

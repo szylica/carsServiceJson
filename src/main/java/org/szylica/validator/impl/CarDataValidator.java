@@ -1,7 +1,9 @@
 package org.szylica.validator.impl;
 
 import com.google.gson.internal.bind.util.ISO8601Utils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.szylica.data.model.CarData;
 import org.szylica.validator.Validator;
 
@@ -9,13 +11,14 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
+@RequiredArgsConstructor
 public class CarDataValidator implements Validator<CarData> {
 
 
 
     @Value("${validation.regex}")
     private String regex;
-
 
     //private final String stringRegex = "^[A-Z\\d\\s]+$";
 

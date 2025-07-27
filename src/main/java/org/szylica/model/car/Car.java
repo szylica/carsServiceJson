@@ -5,6 +5,7 @@ import lombok.*;
 import org.szylica.model.color.Color;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -33,15 +34,26 @@ public class Car {
         return speed >= from && speed <= to;
     }
 
-    public boolean isMoreExpensiveThan(BigDecimal price) {
-        return price.compareTo(this.price) <= 0;
+    public Car sortComponents(Comparator<String> componentsComparator) {
+        return new Car(
+                this.brand,
+                this.model,
+                this.speed,
+                this.color,
+                this.price,
+                this.components.stream().sorted(componentsComparator).toList()
+        );
     }
 
-    public boolean hasComponent(String component) {
-        return components.contains(component);
-    }
-
-    public boolean hasComponents(List<String> componentsList) {
-        return new HashSet<>(componentsList).containsAll(components);
+    /**
+     * Calculates the difference in price between this car and another price.
+     * This method computes the absolute difference between the price of this car and another price value provided
+     * as an argument. The difference is returned as a BigDecimal, ensuring precision in calculation.
+     *
+     * @param otherPrice The price to be compared with this car's price.
+     * @return The absolute difference in price as a BigDecimal.
+     */
+    public BigDecimal calculatePriceDifference(BigDecimal otherPrice) {
+        return this.price.subtract(otherPrice).abs();
     }
 }

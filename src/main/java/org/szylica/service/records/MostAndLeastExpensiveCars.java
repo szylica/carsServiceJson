@@ -1,4 +1,8 @@
 package org.szylica.service.records;
 
-public record MinMax<T>(T min, T max) {
+import org.szylica.model.car.Car;
+
+import java.util.List;
+
+public record MostAndLeastExpensiveCars(List<Car> mostExpensiveCars, List<Car> leastExpensiveCars) {
 }

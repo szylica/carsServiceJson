@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.szylica.data.json.converter.impl.GsonConverter;
 import org.szylica.data.json.deserializer.impl.CarsDataJsonDeserializer;
 import org.szylica.data.json.deserializer.impl.CarRepositoryJsonDeserializer;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @Configuration
 @ComponentScan("org.szylica")
+@PropertySource("classpath:application.properties")
 public class AppBeansConfig {
 
     @Bean

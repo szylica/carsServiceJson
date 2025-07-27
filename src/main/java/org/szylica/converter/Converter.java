@@ -1,4 +1,5 @@
 package org.szylica.converter;
 
-public interface Converter {
+public interface Converter<T, U> {
+    U convert(T t);
 }

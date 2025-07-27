@@ -6,6 +6,6 @@ import org.szylica.model.car.Car;
 
 import java.util.List;
 
-public interface CarsDataToCarsConverter extends Converter<CarsData, List<Car>> {
+public interface FileToCarsConverter extends Converter<String, List<Car>> {
 
 }

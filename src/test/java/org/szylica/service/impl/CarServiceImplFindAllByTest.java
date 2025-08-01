@@ -11,14 +11,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import org.szylica.model.car.CarPredicates;
+import org.szylica.model.color.Color;
 import org.szylica.repository.CarsRepository;
 import org.szylica.service.impl.CarsServiceImpl;
+import org.szylica.service.records.CarCriteria;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import static org.szylica.model.car.CarPredicates.hasSpeedInRangePredicate;
-import static org.szylica.service.ExampleData.allCars;
-import static org.szylica.service.ExampleData.car6;
+import static org.szylica.model.car.CarPredicates.matchesCriteriaPredicate;
+import static org.szylica.service.ExampleData.*;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -44,6 +47,45 @@ public class CarServiceImplFindAllByTest {
         Mockito.when(carsRepository.getAllCars()).thenReturn(allCars);
 
         Assertions.assertThat(carsService.findAllBy(hasSpeedInRangePredicate(350, 380))).isEmpty();
+    }
+
+    @Test
+    @DisplayName("when cars matches criteria")
+    void test3(){
+        Mockito.when(carsRepository.getAllCars()).thenReturn(allCars);
+
+        CarCriteria carCriteria = new CarCriteria(
+                "^B.*",
+                "^X.*",
+                100,
+                200,
+                BigDecimal.ONE,
+                BigDecimal.valueOf(2000),
+                List.of("WHEELS"),
+                Color.BLACK
+        );
+
+        Assertions.assertThat(carsService.findAllBy(matchesCriteriaPredicate(carCriteria))).isEqualTo(List.of(car1));
+    }
+
+    @Test
+    @DisplayName("when cars don't matches criteria")
+    void test4(){
+        Mockito.when(carsRepository.getAllCars()).thenReturn(allCars);
+
+        CarCriteria carCriteria = new CarCriteria(
+                "^B.*",
+                "^X.*",
+                100,
+                110,
+                BigDecimal.ONE,
+                BigDecimal.valueOf(2000),
+                List.of("WHEELS"),
+                Color.BLACK
+        );
+
+        Assertions.assertThat(carsService.findAllBy(matchesCriteriaPredicate(carCriteria))).isEqualTo(List.of());
+
     }
 
 

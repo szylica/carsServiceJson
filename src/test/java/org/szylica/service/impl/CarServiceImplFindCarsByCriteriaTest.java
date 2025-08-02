@@ -1,4 +1,4 @@
-package org.szylica.service;
+package org.szylica.service.impl;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,19 +13,15 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import org.szylica.data.model.CarData;
 import org.szylica.model.car.Car;
-import org.szylica.model.car.CarComparator;
 import org.szylica.repository.CarsRepository;
-import org.szylica.repository.impl.CarsRepositoryImpl;
-import org.szylica.service.impl.CarsServiceImpl;
+import org.szylica.service.ExampleData;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.szylica.model.car.CarComparator.priceCarComparator;
 import static org.szylica.service.ExampleData.*;
 
 @ExtendWith(MockitoExtension.class)

@@ -67,7 +67,7 @@ public class CarsDataToCarsConverterImplTest {
 
 
         Assertions
-                .assertThat(fileToCarsConverter.convert("cars.json"))
+                .assertThat(fileToCarsConverter.convert("cars-test.json"))
                 .hasSize(2);
     }
 
@@ -96,7 +96,7 @@ public class CarsDataToCarsConverterImplTest {
 
 
         Assertions
-                .assertThat(fileToCarsConverter.convert("cars.json"))
+                .assertThat(fileToCarsConverter.convert("cars-test.json"))
                 .hasSize(1)
                 .containsOnly(correctCar.toCar());
     }
